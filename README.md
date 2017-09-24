@@ -25,7 +25,7 @@ Following bundles are available:
 libraries and applications
 
 The package could also be downloaded directly from:
-[https://registry.npmjs.org/syriac-code-util/-/syriac-code-util-1.0.0.tgz](https://registry.npmjs.org/syriac-code-util/-/syriac-code-util-1.0.0.tgz)
+[https://registry.npmjs.org/syriac-code-util/-/syriac-code-util-1.0.1.tgz](https://registry.npmjs.org/syriac-code-util/-/syriac-code-util-1.0.1.tgz)
 
 ## More information
 
@@ -65,6 +65,8 @@ npm run build
     * [.extraConsonants](#module_syriac.extraConsonants) : <code>Array.&lt;string&gt;</code>
     * [.allConsonants](#module_syriac.allConsonants) : <code>Array.&lt;string&gt;</code>
     * [.punctuation](#module_syriac.punctuation) : <code>Array.&lt;string&gt;</code>
+    * [.easternCommonVowels](#module_syriac.easternCommonVowels) : <code>Array.&lt;string&gt;</code>
+    * [.easternOnlyVowels](#module_syriac.easternOnlyVowels) : <code>Array.&lt;string&gt;</code>
     * [.easternVowels](#module_syriac.easternVowels) : <code>Array.&lt;string&gt;</code>
     * [.westernVowels](#module_syriac.westernVowels) : <code>Array.&lt;string&gt;</code>
     * [.westernVowelsBellow](#module_syriac.westernVowelsBellow) : <code>Array.&lt;string&gt;</code>
@@ -111,6 +113,18 @@ All Syriac consonants including Garshuni, Persian, Sogdian and Palestinian, etc.
 
 ### syriac.punctuation : <code>Array.&lt;string&gt;</code>
 Syriac punctuation
+
+**Kind**: static constant of [<code>syriac</code>](#module_syriac)  
+<a name="module_syriac.easternCommonVowels"></a>
+
+### syriac.easternCommonVowels : <code>Array.&lt;string&gt;</code>
+Eastern common vowels - common to Western Syriac as well
+
+**Kind**: static constant of [<code>syriac</code>](#module_syriac)  
+<a name="module_syriac.easternOnlyVowels"></a>
+
+### syriac.easternOnlyVowels : <code>Array.&lt;string&gt;</code>
+Eastern only vowels
 
 **Kind**: static constant of [<code>syriac</code>](#module_syriac)  
 <a name="module_syriac.easternVowels"></a>

@@ -99,18 +99,35 @@ export const punctuation = Object.freeze([
 ]);
 
 /**
+ * Eastern common vowels - common to Western Syriac as well
+ * @constant
+ * @type { string[] }
+*/
+export const easternCommonVowels = Object.freeze([
+  '\u0732', //  ܲ Syriac Pthaha Dotted
+  '\u0735', //  ܵ Syriac Zqapha Dotted
+  '\u0739', //  ܹ Syriac Dotted Zlama Angular
+  '\u073C' //  ܼ Syriac Hbasa-Esasa Dotted
+]);
+
+/**
+ * Eastern only vowels
+ * @constant
+ * @type { string[] }
+*/
+export const easternOnlyVowels = Object.freeze([
+  '\u0738', //  ܸ Syriac Dotted Zlama Horizontal
+  '\u073F' //  ܿ Syriac Rwaha
+]);
+
+/**
  * Eastern vowels
  * @constant
  * @type { string[] }
 */
-export const easternVowels = Object.freeze([
-  '\u0732', //  ܲ Syriac Pthaha Dotted
-  '\u0735', //  ܵ Syriac Zqapha Dotted
-  '\u0739', //  ܹ Syriac Dotted Zlama Angular
-  '\u073C', //  ܼ Syriac Hbasa-Esasa Dotted
-  '\u0738', //  ܸ Syriac Dotted Zlama Horizontal
-  '\u073F' //  ܿ Syriac Rwaha
-]);
+export const easternVowels = Object.freeze(
+  easternCommonVowels.concat(easternOnlyVowels)
+);
 
 /**
  * Western vowels

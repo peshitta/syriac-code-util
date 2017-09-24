@@ -1,6 +1,6 @@
 {
   "name": "syriac-code-util",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Utility functions for Syriac Unicode",
   "main": "build/syriac-code-util.js",
   "main݂Min": "build/syriac-code-util.min.js",
