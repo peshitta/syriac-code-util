@@ -39,7 +39,7 @@ export const extraConsonants = Object.freeze([
   '\u0711', //  ܑ Syriac Letter Superscript Alaph - used in East Syriac texts to indicate an etymological Alaph
   '\u0714', // ܔ Syriac Letter Gamal Garshuni - Garshuni ج (jim); used in Garshuni documents
   '\u0716', // ܖ Syriac Letter Dotless Dalath Rish - ܕ or ܪ without a dot, used in old Syriac texts; ambiguous form for undifferentiated early dalath/rish
-  '\u071C,', // ܜ Syriac Letter Teth Garshuni - Garshuni ظ (tha); used in Garshuni documents
+  '\u071C', // ܜ Syriac Letter Teth Garshuni - Garshuni ظ (tha); used in Garshuni documents
   '\u071E', // ܞ Syriac Letter Yudh He - The characters for Yah; mostly used in East Syriac texts
   '\u0724', // ܤ Syriac Letter Final Semkath - A variant form of ܣ with a tail
   '\u0727', // ܧ Syriac Letter Reversed Pe - Christian Palestinian Aramaic Pe; used in Christian Palestinian Aramaic
