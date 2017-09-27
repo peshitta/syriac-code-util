@@ -204,7 +204,7 @@ export const otherDiacritics = Object.freeze([
   '\u0304', // ̄  Horizontal Line Above: combining macron
   '\u0331', // ̱  Horizontal Line Below: combining macron below
   '\u0748', //  ݈ Syriac Oblique Line Below • indication of a silent letter • also used to indicate numbers multiplied by a certain constant
-  '\u0748', // ̤  Seyame Below: combining diaeresis below
+  '\u0324', // ̤  Seyame Below: combining diaeresis below
   '\u0740', //  ݀ Syriac Feminine Dot • feminine marker used with the Taw feminine suffix
   '\u0307', // ̇  Combining dot above: Use ܒ̇ on the feminine he ending: ܟܬܒܗ̇ ‘her book’, to mark present tense: ܟ̇ܬܒ ‘he is writing’, etc.
   '\u0323', // ̣  Combining dot below: Use ܒ̣ to mark past tense: ܟ̣ܬܒ ‘he wrote’, etc.

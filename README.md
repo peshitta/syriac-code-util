@@ -25,7 +25,7 @@ Following bundles are available:
 libraries and applications
 
 The package could also be downloaded directly from:
-[https://registry.npmjs.org/syriac-code-util/-/syriac-code-util-1.0.2.tgz](https://registry.npmjs.org/syriac-code-util/-/syriac-code-util-1.0.2.tgz)
+[https://registry.npmjs.org/syriac-code-util/-/syriac-code-util-1.0.3.tgz](https://registry.npmjs.org/syriac-code-util/-/syriac-code-util-1.0.3.tgz)
 
 ## More information
 
