@@ -1,5 +1,4 @@
-/** @module syriac */
-
+/** @module syriacCodeUtil */
 /**
  * Syriac base 22 consonants
  * @constant
