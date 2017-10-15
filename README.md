@@ -25,7 +25,7 @@ Following bundles are available:
 libraries and applications
 
 The package could also be downloaded directly from:
-[https://registry.npmjs.org/syriac-code-util/-/syriac-code-util-1.0.4.tgz](https://registry.npmjs.org/syriac-code-util/-/syriac-code-util-1.0.4.tgz)
+[https://registry.npmjs.org/syriac-code-util/-/syriac-code-util-1.0.5.tgz](https://registry.npmjs.org/syriac-code-util/-/syriac-code-util-1.0.5.tgz)
 
 ## More information
 
@@ -71,6 +71,7 @@ npm run build
     * [.westernVowels](#module_syriacCodeUtil.westernVowels) : <code>Array.&lt;string&gt;</code>
     * [.westernVowelsBellow](#module_syriacCodeUtil.westernVowelsBellow) : <code>Array.&lt;string&gt;</code>
     * [.allWesternVowels](#module_syriacCodeUtil.allWesternVowels) : <code>Array.&lt;string&gt;</code>
+    * [.garshuniVowels](#module_syriacCodeUtil.garshuniVowels) : <code>Array.&lt;string&gt;</code>
     * [.allVowels](#module_syriacCodeUtil.allVowels) : <code>Array.&lt;string&gt;</code>
     * [.commonDiacritics](#module_syriacCodeUtil.commonDiacritics) : <code>Array.&lt;string&gt;</code>
     * [.swadayaDiacritics](#module_syriacCodeUtil.swadayaDiacritics) : <code>Array.&lt;string&gt;</code>
@@ -151,10 +152,16 @@ Western vowels below line
 All Western vowels
 
 **Kind**: static constant of [<code>syriacCodeUtil</code>](#module_syriacCodeUtil)  
+<a name="module_syriacCodeUtil.garshuniVowels"></a>
+
+### syriacCodeUtil.garshuniVowels : <code>Array.&lt;string&gt;</code>
+Garshuni vowels
+
+**Kind**: static constant of [<code>syriacCodeUtil</code>](#module_syriacCodeUtil)  
 <a name="module_syriacCodeUtil.allVowels"></a>
 
 ### syriacCodeUtil.allVowels : <code>Array.&lt;string&gt;</code>
-Eastern and Western vowels
+Eastern/Western and Garshuni vowels
 
 **Kind**: static constant of [<code>syriacCodeUtil</code>](#module_syriacCodeUtil)  
 <a name="module_syriacCodeUtil.commonDiacritics"></a>

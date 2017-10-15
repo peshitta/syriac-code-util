@@ -162,11 +162,28 @@ export const westernVowelsBellow = Object.freeze([
 export const allWesternVowels = westernVowels.concat(westernVowelsBellow);
 
 /**
- * Eastern and Western vowels
+ * Garshuni vowels
  * @constant
  * @type { string[] }
  */
-export const allVowels = easternVowels.concat(allWesternVowels);
+export const garshuniVowels = Object.freeze([
+  '\u064E', //  َ Arabic fatha - Garshuni: a
+  '\u0650', //  ِ Arabic kasra - Garshuni: i
+  '\u064F', //  ُ Arabic damma - Garshuni: u
+  '\u064B', //  ً Arabic fathatan - Garshuni: an
+  '\u064D', //  ٍ Arabic kasratan - Garshuni: in
+  '\u064C', //  ٌ Arabic dammatan - Garshuni: un
+  '\u0670' //  ٰ Arabic letter superscript alef - Garshuni: long a
+]);
+
+/**
+ * Eastern/Western and Garshuni vowels
+ * @constant
+ * @type { string[] }
+ */
+export const allVowels = easternVowels
+  .concat(allWesternVowels)
+  .concat(garshuniVowels);
 
 /**
  * Diacritics common to both Eastern and Western
@@ -214,16 +231,9 @@ export const otherDiacritics = Object.freeze([
   '\u0749', //  ݉ Syriac Music • a music mark • also used in the Syrian Orthodox Anaphora book to mark the breaking of the Eucharist bread
   '\u074A', //  ݊ Syriac Barrekh • a diacritic cross used in liturgical texts
   '\u032D', // ̭  Turoyo combining circumflex accent below
-  '\u064E', //  َ Arabic fatha - Garshuni
-  '\u064B', //  ً Arabic fathatan - Garshuni
-  '\u064F', //  ُ Arabic damma - Garshuni
-  '\u064C', //  ٌ Arabic dammatan - Garshuni
   '\u0653', //  ٓ Arabic maddah above - Garshuni
   '\u0654', //  ٔ Arabic hamza above - Garshuni
-  '\u0650', //  ِ Arabic kasra - Garshuni
-  '\u064D', //  ٍ Arabic kasratan - Garshuni
   '\u0655', //  َ Arabic hamza below - Garshuni
-  '\u0670', //  ٰ Arabic letter superscript alef - Garshuni
   '\u0651' //  ّ Arabic shadda - Garshuni
 ]);
 

@@ -1,6 +1,6 @@
 {
   "name": "syriac-code-util",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Syriac Unicode utilities",
   "main": "build/syriac-code-util.js",
   "mainMin": "build/syriac-code-util.min.js",
@@ -62,7 +62,7 @@
   "dependencies": {},
   "devDependencies": {
     "coveralls": "^3.0.0",
-    "eslint": "^4.8.0",
+    "eslint": "^4.9.0",
     "eslint-config-airbnb-base": "^12.0.2",
     "eslint-plugin-import": "^2.7.0",
     "istanbul": "^0.4.5",

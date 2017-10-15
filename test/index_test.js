@@ -63,6 +63,7 @@ describe('Util', () => {
     test.ok(sut.isVowel('ܻ'), 'ܻ isVowel');
     test.ok(sut.isVowel('ܼ'), 'ܼ isVowel');
     test.ok(sut.isVowel('ܽ'), 'ܽ isVowel');
+    test.ok(sut.isVowel('ً'), '̄ ً isVowel');
     test.ok(!sut.isVowel('U'), 'U isVowel');
     test.ok(!sut.isVowel(':'), ': isVowel');
     test.ok(!sut.isVowel(''), "! '' isVowel");
@@ -117,8 +118,8 @@ describe('Util', () => {
     test.ok(sut.isOtherDiacritic('݊'), '݊ isOtherDiacritic');
     test.ok(sut.isOtherDiacritic('̄'), '̄ isOtherDiacritic');
     test.ok(sut.isOtherDiacritic('݀'), '݀ isOtherDiacritic');
-    test.ok(sut.isOtherDiacritic('ً'), '̄ ً isOtherDiacritic');
     test.ok(sut.isOtherDiacritic('ّ'), 'ّ isOtherDiacritic');
+    test.ok(!sut.isOtherDiacritic('ً'), '̄ ً isOtherDiacritic');
     test.ok(!sut.isOtherDiacritic('݁'), '݁ isOtherDiacritic');
     test.ok(!sut.isOtherDiacritic('݂'), '݂ isOtherDiacritic');
     test.ok(!sut.isOtherDiacritic('݇'), '݇ isOtherDiacritic');
