@@ -25,7 +25,7 @@ Following bundles are available:
 libraries and applications
 
 The package could also be downloaded directly from:
-[https://registry.npmjs.org/syriac-code-util/-/syriac-code-util-1.0.5.tgz](https://registry.npmjs.org/syriac-code-util/-/syriac-code-util-1.0.5.tgz)
+[https://registry.npmjs.org/syriac-code-util/-/syriac-code-util-1.0.6.tgz](https://registry.npmjs.org/syriac-code-util/-/syriac-code-util-1.0.6.tgz)
 
 ## More information
 
@@ -61,18 +61,22 @@ npm run build
 ## API Reference
 
 * [syriacCodeUtil](#module_syriacCodeUtil)
+    * [.consonantsByName](#module_syriacCodeUtil.consonantsByName) : <code>Object.&lt;string, string&gt;</code>
     * [.consonants](#module_syriacCodeUtil.consonants) : <code>Array.&lt;string&gt;</code>
     * [.extraConsonants](#module_syriacCodeUtil.extraConsonants) : <code>Array.&lt;string&gt;</code>
     * [.allConsonants](#module_syriacCodeUtil.allConsonants) : <code>Array.&lt;string&gt;</code>
     * [.punctuation](#module_syriacCodeUtil.punctuation) : <code>Array.&lt;string&gt;</code>
+    * [.easternVowelsByName](#module_syriacCodeUtil.easternVowelsByName) : <code>Object.&lt;string, string&gt;</code>
     * [.easternCommonVowels](#module_syriacCodeUtil.easternCommonVowels) : <code>Array.&lt;string&gt;</code>
     * [.easternOnlyVowels](#module_syriacCodeUtil.easternOnlyVowels) : <code>Array.&lt;string&gt;</code>
     * [.easternVowels](#module_syriacCodeUtil.easternVowels) : <code>Array.&lt;string&gt;</code>
+    * [.westernVowelsByName](#module_syriacCodeUtil.westernVowelsByName) : <code>Object.&lt;string, string&gt;</code>
     * [.westernVowels](#module_syriacCodeUtil.westernVowels) : <code>Array.&lt;string&gt;</code>
     * [.westernVowelsBellow](#module_syriacCodeUtil.westernVowelsBellow) : <code>Array.&lt;string&gt;</code>
     * [.allWesternVowels](#module_syriacCodeUtil.allWesternVowels) : <code>Array.&lt;string&gt;</code>
     * [.garshuniVowels](#module_syriacCodeUtil.garshuniVowels) : <code>Array.&lt;string&gt;</code>
     * [.allVowels](#module_syriacCodeUtil.allVowels) : <code>Array.&lt;string&gt;</code>
+    * [.diacriticsByName](#module_syriacCodeUtil.diacriticsByName) : <code>Object.&lt;string, string&gt;</code>
     * [.commonDiacritics](#module_syriacCodeUtil.commonDiacritics) : <code>Array.&lt;string&gt;</code>
     * [.swadayaDiacritics](#module_syriacCodeUtil.swadayaDiacritics) : <code>Array.&lt;string&gt;</code>
     * [.otherDiacritics](#module_syriacCodeUtil.otherDiacritics) : <code>Array.&lt;string&gt;</code>
@@ -90,8 +94,15 @@ npm run build
     * [.isPunctuation](#module_syriacCodeUtil.isPunctuation) ⇒ <code>boolean</code>
     * [.isOther](#module_syriacCodeUtil.isOther) ⇒ <code>boolean</code>
     * [.isDotting](#module_syriacCodeUtil.isDotting) ⇒ <code>boolean</code>
+    * [.isDotted](#module_syriacCodeUtil.isDotted) ⇒ <code>boolean</code>
     * [.removeDotting](#module_syriacCodeUtil.removeDotting) ⇒ <code>string</code>
 
+<a name="module_syriacCodeUtil.consonantsByName"></a>
+
+### syriacCodeUtil.consonantsByName : <code>Object.&lt;string, string&gt;</code>
+CAL consonant name to value map
+
+**Kind**: static constant of [<code>syriacCodeUtil</code>](#module_syriacCodeUtil)  
 <a name="module_syriacCodeUtil.consonants"></a>
 
 ### syriacCodeUtil.consonants : <code>Array.&lt;string&gt;</code>
@@ -116,6 +127,12 @@ All Syriac consonants including Garshuni, Persian, Sogdian and Palestinian, etc.
 Syriac punctuation
 
 **Kind**: static constant of [<code>syriacCodeUtil</code>](#module_syriacCodeUtil)  
+<a name="module_syriacCodeUtil.easternVowelsByName"></a>
+
+### syriacCodeUtil.easternVowelsByName : <code>Object.&lt;string, string&gt;</code>
+Eastern vowel name to value map
+
+**Kind**: static constant of [<code>syriacCodeUtil</code>](#module_syriacCodeUtil)  
 <a name="module_syriacCodeUtil.easternCommonVowels"></a>
 
 ### syriacCodeUtil.easternCommonVowels : <code>Array.&lt;string&gt;</code>
@@ -132,6 +149,12 @@ Eastern only vowels
 
 ### syriacCodeUtil.easternVowels : <code>Array.&lt;string&gt;</code>
 Eastern vowels
+
+**Kind**: static constant of [<code>syriacCodeUtil</code>](#module_syriacCodeUtil)  
+<a name="module_syriacCodeUtil.westernVowelsByName"></a>
+
+### syriacCodeUtil.westernVowelsByName : <code>Object.&lt;string, string&gt;</code>
+Western vowel name to value map
 
 **Kind**: static constant of [<code>syriacCodeUtil</code>](#module_syriacCodeUtil)  
 <a name="module_syriacCodeUtil.westernVowels"></a>
@@ -162,6 +185,12 @@ Garshuni vowels
 
 ### syriacCodeUtil.allVowels : <code>Array.&lt;string&gt;</code>
 Eastern/Western and Garshuni vowels
+
+**Kind**: static constant of [<code>syriacCodeUtil</code>](#module_syriacCodeUtil)  
+<a name="module_syriacCodeUtil.diacriticsByName"></a>
+
+### syriacCodeUtil.diacriticsByName : <code>Object.&lt;string, string&gt;</code>
+Diacritics name map
 
 **Kind**: static constant of [<code>syriacCodeUtil</code>](#module_syriacCodeUtil)  
 <a name="module_syriacCodeUtil.commonDiacritics"></a>
@@ -333,6 +362,18 @@ Returns true if c is dotting character
 | Param | Type | Description |
 | --- | --- | --- |
 | c | <code>string</code> | input character |
+
+<a name="module_syriacCodeUtil.isDotted"></a>
+
+### syriacCodeUtil.isDotted ⇒ <code>boolean</code>
+Return true if input word has vowels or diacritics
+
+**Kind**: static constant of [<code>syriacCodeUtil</code>](#module_syriacCodeUtil)  
+**Returns**: <code>boolean</code> - true if word has vowels or diacritics  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| word | <code>string</code> | input word |
 
 <a name="module_syriacCodeUtil.removeDotting"></a>
 

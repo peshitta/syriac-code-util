@@ -1,32 +1,83 @@
 /** @module syriacCodeUtil */
+import { hasDotting, clearDotting } from 'aramaic-mapper';
+
+/**
+ * CAL consonant name to value map
+ * @constant
+ * @type { Object.<string, string> }
+*/
+export const consonantsByName = Object.freeze(
+  Object.create(null, {
+    alaph: { value: '\u0710', enumerable: true }, // ܐ Syriac Letter Alaph
+    beth: { value: '\u0712', enumerable: true }, // ܒ Syriac Letter Beth
+    gamal: { value: '\u0713', enumerable: true }, // ܓ Syriac Letter Gamal
+    dalath: { value: '\u0715', enumerable: true }, // ܕ Syriac Letter Dalath
+
+    he: { value: '\u0717', enumerable: true }, // ܗ Syriac Letter He
+    waw: { value: '\u0718', enumerable: true }, // ܘ Syriac Letter Waw
+    zayn: { value: '\u0719', enumerable: true }, // ܙ Syriac Letter Zain
+
+    heth: { value: '\u071A', enumerable: true }, // ܚ Syriac Letter Heth
+    teth: { value: '\u071B', enumerable: true }, // ܛ Syriac Letter Teth
+    yod: { value: '\u071D', enumerable: true }, // ܝ Syriac Letter Yudh
+
+    kaph: { value: '\u071F', enumerable: true }, // ܟ Syriac Letter Kaph
+    lamadh: { value: '\u0720', enumerable: true }, // ܠ Syriac Letter Lamadh
+    mim: { value: '\u0721', enumerable: true }, // ܡ Syriac Letter Mim
+    nun: { value: '\u0722', enumerable: true }, // ܢ Syriac Letter Nun
+
+    semkath: { value: '\u0723', enumerable: true }, // ܣ Syriac Letter Semkath
+    e: { value: '\u0725', enumerable: true }, // ܥ Syriac Letter E
+    pe: { value: '\u0726', enumerable: true }, // ܦ Syriac Letter Pe
+    sadhe: { value: '\u0728', enumerable: true }, // ܨ Syriac Letter Sadhe
+
+    qoph: { value: '\u0729', enumerable: true }, // ܩ Syriac Letter Qaph
+    resh: { value: '\u072A', enumerable: true }, // ܪ Syriac Letter Rish
+    shin: { value: '\u072B', enumerable: true }, // ܫ Syriac Letter Shin
+    taw: { value: '\u072C', enumerable: true } // ܬ Syriac Letter Taw
+  })
+);
+
+const l = consonantsByName;
 /**
  * Syriac base 22 consonants
  * @constant
  * @type { string[] }
 */
 export const consonants = Object.freeze([
-  '\u0710', // ܐ Syriac Letter Alaph
-  '\u0712', // ܒ Syriac Letter Beth
-  '\u0713', // ܓ Syriac Letter Gamal
-  '\u0715', // ܕ Syriac Letter Dalath
-  '\u0717', // ܗ Syriac Letter He
-  '\u0718', // ܘ Syriac Letter Waw
-  '\u0719', // ܙ Syriac Letter Zain
-  '\u071A', // ܚ Syriac Letter Heth
-  '\u071B', // ܛ Syriac Letter Teth
-  '\u071D', // ܝ Syriac Letter Yudh
-  '\u071F', // ܟ Syriac Letter Kaph
-  '\u0720', // ܠ Syriac Letter Lamadh
-  '\u0721', // ܡ Syriac Letter Mim
-  '\u0722', // ܢ Syriac Letter Nun
-  '\u0723', // ܣ Syriac Letter Semkath
-  '\u0725', // ܥ Syriac Letter E
-  '\u0726', // ܦ Syriac Letter Pe
-  '\u0728', // ܨ Syriac Letter Sadhe
-  '\u0729', // ܩ Syriac Letter Qaph
-  '\u072A', // ܪ Syriac Letter Rish
-  '\u072B', // ܫ Syriac Letter Shin
-  '\u072C' // ܬ Syriac Letter Taw
+  // abgad
+  l.alaph,
+  l.beth,
+  l.gamal,
+  l.dalath,
+
+  // hawaz
+  l.he,
+  l.waw,
+  l.zayn,
+
+  // ḥaṭy
+  l.heth,
+  l.teth,
+  l.yod,
+
+  // kalman
+  l.kaph,
+  l.lamadh,
+  l.mim,
+  l.nun,
+
+  // saʿpac
+  l.semkath,
+  l.e,
+  l.pe,
+  l.sadhe,
+
+  // qarshat
+  l.qoph,
+  l.resh,
+  l.shin,
+  l.taw
 ]);
 
 /**
@@ -98,15 +149,33 @@ export const punctuation = Object.freeze([
 ]);
 
 /**
+ * Eastern vowel name to value map
+ * @constant
+ * @type { Object.<string, string> }
+*/
+export const easternVowelsByName = Object.freeze(
+  Object.create(null, {
+    pthaha: { value: '\u0732', enumerable: true },
+    zqapha: { value: '\u0735', enumerable: true },
+    rbasa: { value: '\u0739', enumerable: true },
+    hbasaEsasa: { value: '\u073C', enumerable: true },
+
+    zlama: { value: '\u0738', enumerable: true },
+    rwaha: { value: '\u073F', enumerable: true }
+  })
+);
+
+const ev = easternVowelsByName;
+/**
  * Eastern common vowels - common to Western Syriac as well
  * @constant
  * @type { string[] }
 */
 export const easternCommonVowels = Object.freeze([
-  '\u0732', //  ܲ Syriac Pthaha Dotted
-  '\u0735', //  ܵ Syriac Zqapha Dotted
-  '\u0739', //  ܹ Syriac Dotted Zlama Angular
-  '\u073C' //  ܼ Syriac Hbasa-Esasa Dotted
+  ev.pthaha, //  ܲ Syriac Pthaha Dotted
+  ev.zqapha, //  ܵ Syriac Zqapha Dotted
+  ev.rbasa, //  ܹ Syriac Dotted Zlama Angular
+  ev.hbasaEsasa //  ܼ Syriac Hbasa-Esasa Dotted
 ]);
 
 /**
@@ -115,8 +184,8 @@ export const easternCommonVowels = Object.freeze([
  * @type { string[] }
 */
 export const easternOnlyVowels = Object.freeze([
-  '\u0738', //  ܸ Syriac Dotted Zlama Horizontal
-  '\u073F' //  ܿ Syriac Rwaha
+  ev.zlama, //  ܸ Syriac Dotted Zlama Horizontal
+  ev.rwaha //  ܿ Syriac Rwaha
 ]);
 
 /**
@@ -129,16 +198,32 @@ export const easternVowels = Object.freeze(
 );
 
 /**
+ * Western vowel name to value map
+ * @constant
+ * @type { Object.<string, string> }
+*/
+export const westernVowelsByName = Object.freeze(
+  Object.create(null, {
+    pthaha: { value: '\u0730', enumerable: true },
+    zqapha: { value: '\u0733', enumerable: true },
+    rbasa: { value: '\u0736', enumerable: true },
+    hbasa: { value: '\u073A', enumerable: true },
+    esasa: { value: '\u073D', enumerable: true }
+  })
+);
+
+const wv = westernVowelsByName;
+/**
  * Western vowels
  * @constant
  * @type { string[] }
 */
 export const westernVowels = Object.freeze([
-  '\u0730', //  ܰ Syriac Pthaha Above
-  '\u0733', //  ܳ Syriac Zqapha Above
-  '\u0736', //  ܶ Syriac Rbasa Above
-  '\u073A', //  ܺ Syriac Hbasa Above
-  '\u073D' //  ܽ Syriac Esasa Above
+  wv.pthaha, //  ܰ Syriac Pthaha Above
+  wv.zqapha, //  ܳ Syriac Zqapha Above
+  wv.rbasa, //  ܶ Syriac Rbasa Above
+  wv.hbasa, //  ܺ Syriac Hbasa Above
+  wv.esasa //  ܽ Syriac Esasa Above
 ]);
 
 /**
@@ -186,16 +271,31 @@ export const allVowels = easternVowels
   .concat(garshuniVowels);
 
 /**
+ * Diacritics name map
+ * @constant
+ * @type { Object.<string, string> }
+*/
+export const diacriticsByName = Object.freeze(
+  Object.create(null, {
+    qushaya: { value: '\u0741', enumerable: true },
+    rukkakha: { value: '\u0742', enumerable: true },
+    lineaOccultans: { value: '\u0747', enumerable: true },
+    seyame: { value: '\u0308', enumerable: true }
+  })
+);
+
+const d = diacriticsByName;
+/**
  * Diacritics common to both Eastern and Western
  * Qushaya, Rukkakha, Line under, Seyame
  * @constant
  * @type { string[] }
 */
 export const commonDiacritics = Object.freeze([
-  '\u0741', //  ݁ Syriac Qushshaya • indicates a plosive pronunciation
-  '\u0742', //  ݂ Syriac Rukkakha • indicates an aspirated (spirantized) pronunciation
-  '\u0747', //  ݇ Syriac Oblique Line Above • indication of a silent letter
-  '\u0308' // ̈  Seyame, Rebwe: combining diaeresis
+  d.qushaya, //  ݁ Syriac Qushshaya • indicates a plosive pronunciation
+  d.rukkakha, //  ݂ Syriac Rukkakha • indicates an aspirated (spirantized) pronunciation
+  d.lineaOccultans, //  ݇ Syriac Oblique Line Above • indication of a silent letter
+  d.seyame // ̈  Seyame, Rebwe: combining diaeresis
 ]);
 
 /**
@@ -342,24 +442,15 @@ export const isOther = c => other.indexOf(c) > -1;
 export const isDotting = c => dotting.indexOf(c) > -1;
 
 /**
+ * Return true if input word has vowels or diacritics
+ * @param { string } word input word
+ * @returns { boolean } true if word has vowels or diacritics
+ */
+export const isDotted = hasDotting(isDotting);
+
+/**
  * Remove dotting (vowels and diacritics), leaving consonantal word only.
  * @param { string } word input word to be processed
  * @returns { string } consonantal word
  */
-export const removeDotting = word => {
-  if (!word) {
-    return word;
-  }
-
-  let hasDotting = false;
-  const stack = [];
-  for (let i = 0, len = word.length; i < len; i++) {
-    const c = word.charAt(i);
-    if (isDotting(c)) {
-      hasDotting = true;
-    } else {
-      stack.push(c);
-    }
-  }
-  return hasDotting ? stack.join('') : word;
-};
+export const removeDotting = clearDotting(isDotting);

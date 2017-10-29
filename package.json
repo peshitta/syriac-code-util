@@ -1,6 +1,6 @@
 {
   "name": "syriac-code-util",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Syriac Unicode utilities",
   "main": "build/syriac-code-util.js",
   "mainMin": "build/syriac-code-util.min.js",
@@ -40,6 +40,7 @@
     "url": "git+https://github.com/peshitta/syriac-code-util.git"
   },
   "keywords": [
+    "Syriac",
     "Peshitta",
     "Peshitto",
     "Pshitta",
@@ -48,7 +49,6 @@
     "Sedrajs",
     "Sedra",
     "Aramaic",
-    "Syriac",
     "CAL",
     "Estrangela",
     "Estrangelo"
@@ -59,12 +59,14 @@
     "url": "https://github.com/peshitta/syriac-code-util/issues"
   },
   "homepage": "https://github.com/peshitta/syriac-code-util#readme",
-  "dependencies": {},
+  "dependencies": {
+    "aramaic-mapper": "^1.1.3"
+  },
   "devDependencies": {
     "coveralls": "^3.0.0",
-    "eslint": "^4.9.0",
-    "eslint-config-airbnb-base": "^12.0.2",
-    "eslint-plugin-import": "^2.7.0",
+    "eslint": "^4.10.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
     "istanbul": "^0.4.5",
     "jsdoc-to-markdown": "^3.0.0",
     "mocha": "^4.0.1",

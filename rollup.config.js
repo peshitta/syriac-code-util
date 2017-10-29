@@ -8,7 +8,7 @@ const isDev = process.env.BUILD === 'dev';
 const banner = isProduction
   ? '/**\n' +
     '* @file Syriac Unicode utilities\n' +
-    '* @version 1.0.5\n' +
+    '* @version 1.0.6\n' +
     '* @author Greg Borota\n' +
     '* @copyright (c) 2017 Greg Borota.\n' +
     '* @license MIT\n' +
@@ -40,7 +40,7 @@ const external = Object.keys(pkg.dependencies);
 const input = 'src/main.js';
 const name = 'syriacCodeUtil';
 const format = 'umd';
-const globals = {};
+const globals = { 'aramaic-mapper': 'aramaicMapper' };
 const sourcemap = !isProduction;
 const plugins = [buble()];
 
