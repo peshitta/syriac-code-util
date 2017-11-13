@@ -1,5 +1,5 @@
 /** @module syriacCodeUtil */
-import { hasDotting, clearDotting } from 'aramaic-mapper';
+import { hasDotting, clearDotting, getSort } from 'aramaic-mapper';
 
 /**
  * CAL consonant name to value map
@@ -364,6 +364,115 @@ export const other = Object.freeze([
 export const dotting = Object.freeze(allVowels.concat(allDiacritics));
 
 /**
+ * CAL to ordinal ASCII value. Used for sorting:
+ * a b c d e f g h i j k l m n o p q r s t u v
+ * w x y z { | }
+ * @constant
+ * @type { Object.<string, string> }
+*/
+export const letterAsciiMap = Object.freeze(
+  Object.create(null, {
+    [l.alaph]: { value: 'a', enumerable: true },
+    [l.beth]: { value: 'b', enumerable: true },
+    [l.gamal]: { value: 'c', enumerable: true },
+    [l.dalath]: { value: 'd', enumerable: true },
+
+    [l.he]: { value: 'e', enumerable: true },
+    [l.waw]: { value: 'f', enumerable: true },
+    [l.zayn]: { value: 'g', enumerable: true },
+
+    [l.heth]: { value: 'h', enumerable: true },
+    [l.teth]: { value: 'i', enumerable: true },
+    [l.yod]: { value: 'j', enumerable: true },
+
+    [l.kaph]: { value: 'k', enumerable: true },
+    [l.lamadh]: { value: 'l', enumerable: true },
+    [l.mim]: { value: 'm', enumerable: true },
+    [l.nun]: { value: 'n', enumerable: true },
+
+    [l.semkath]: { value: 'o', enumerable: true },
+    [l.e]: { value: 'p', enumerable: true },
+    [l.pe]: { value: 'q', enumerable: true },
+    [l.sadhe]: { value: 'r', enumerable: true },
+
+    [l.qoph]: { value: 's', enumerable: true },
+    [l.resh]: { value: 't', enumerable: true },
+    [l.shin]: { value: 'u', enumerable: true },
+    [l.taw]: { value: 'v', enumerable: true },
+
+    ['\u0711']: { value: 'a', enumerable: true }, //  ܑ Syriac Letter Superscript Alaph - used in East Syriac texts to indicate an etymological Alaph
+    ܔ: { value: 'c', enumerable: true }, // ܔ Syriac Letter Gamal Garshuni - Garshuni ج (jim); used in Garshuni documents
+    ܖ: { value: 'd', enumerable: true }, // ܖ Syriac Letter Dotless Dalath Rish - ܕ or ܪ without a dot, used in old Syriac texts; ambiguous form for undifferentiated early dalath/rish
+    ܜ: { value: 'i', enumerable: true }, // ܜ Syriac Letter Teth Garshuni - Garshuni ظ (tha); used in Garshuni documents
+    ܞ: { value: 'je', enumerable: true }, // ܞ Syriac Letter Yudh He - The characters for Yah; mostly used in East Syriac texts
+    ܤ: { value: 'o', enumerable: true }, // ܤ Syriac Letter Final Semkath - A variant form of ܣ with a tail
+    ܧ: { value: 'q', enumerable: true }, // ܧ Syriac Letter Reversed Pe - Christian Palestinian Aramaic Pe; used in Christian Palestinian Aramaic
+    ܭ: { value: 'b', enumerable: true }, // ܭ Syriac Letter Persian Bheth
+    ܮ: { value: 'c', enumerable: true }, // ܮ Syriac Letter Persian Ghamal
+    ܯ: { value: 'd', enumerable: true }, // ܯ Syriac Letter Persian Dhalath
+    ݍ: { value: 'g', enumerable: true }, // ݍ Syriac Letter Sogdian Zhain
+    ݎ: { value: 'k', enumerable: true }, // ݎ Syriac Letter Sogdian Khaph
+    ݏ: { value: 'q', enumerable: true }, // ݏ Syriac Letter Sogdian Fe
+    ء: { value: 'a', enumerable: true }, // ء Arabic Letter Hamza  - Garshuni hamzah
+
+    [ev.pthaha]: { value: 'w', enumerable: true }, // a
+    [wv.pthaha]: { value: 'w', enumerable: true }, // a
+    ['\u0731']: { value: 'w', enumerable: true }, // a  ܱ Syriac Pthaha Below
+    ['\u064E']: { value: 'w', enumerable: true }, //  َ Arabic fatha - Garshuni: a
+    ['\u064B']: { value: 'w', enumerable: true }, //  ً Arabic fathatan - Garshuni: an
+    [ev.zqapha]: { value: 'x', enumerable: true }, // o
+    [wv.zqapha]: { value: 'x', enumerable: true }, // o
+    ['\u0734']: { value: 'x', enumerable: true }, // o  ܴ Syriac Zqapha Below
+    ['\u0670']: { value: 'x', enumerable: true }, //  ٰ Arabic letter superscript alef - Garshuni: long a
+    [ev.rbasa]: { value: 'y', enumerable: true }, // e
+    [wv.rbasa]: { value: 'y', enumerable: true }, // e
+    ['\u0737']: { value: 'y', enumerable: true }, // e  ܷ Syriac Rbasa Below
+    [ev.zlama]: { value: 'z', enumerable: true }, // E
+    [ev.hbasa]: { value: '{', enumerable: true }, // i
+    [wv.hbasa]: { value: '{', enumerable: true }, // i
+    ['\u073B']: { value: '{', enumerable: true }, // i  ܻ Syriac Hbasa Below
+    ['\u0650']: { value: '{', enumerable: true }, //  ِ Arabic kasra - Garshuni: i
+    ['\u064D']: { value: '{', enumerable: true }, //  ٍ Arabic kasratan - Garshuni: in
+    [ev.esasa]: { value: '|', enumerable: true }, // u
+    [wv.esasa]: { value: '|', enumerable: true }, // u
+    ['\u073E']: { value: '|', enumerable: true }, // u  ܾ Syriac Esasa Below
+    ['\u064F']: { value: '|', enumerable: true }, //  ُ Arabic damma - Garshuni: u
+    ['\u064C']: { value: '|', enumerable: true }, //  ٌ Arabic dammatan - Garshuni: un
+    [ev.rwaha]: { value: '}', enumerable: true }, // O
+
+    [d.qushaya]: { value: '', enumerable: true },
+    [d.rukkakha]: { value: ',', enumerable: true },
+    [d.lineaOccultans]: { value: '', enumerable: true },
+    [d.seyame]: { value: '', enumerable: true },
+
+    ['\u0303']: { value: '', enumerable: true }, // ̃  Swadaya combining tilde
+    ['\u0330']: { value: '', enumerable: true }, // ̰  Swadaya combining tilde below
+    ['\u032E']: { value: '', enumerable: true }, // ̮  Swadaya combining breve below
+
+    ['\u030A']: { value: '', enumerable: true }, // ̊  Western Syriac Qushshaya variation: combining ring above
+    ['\u0325']: { value: '', enumerable: true }, // ̥  Western Syriac Rukkakha variation: combining ring below
+    ['\u0304']: { value: '', enumerable: true }, // ̄  Horizontal Line Above: combining macron
+    ['\u0331']: { value: '', enumerable: true }, // ̱  Horizontal Line Below: combining macron below
+    ['\u0748']: { value: '', enumerable: true }, //  ݈ Syriac Oblique Line Below • indication of a silent letter • also used to indicate numbers multiplied by a certain constant
+    ['\u0324']: { value: '', enumerable: true }, // ̤  Seyame Below: combining diaeresis below
+    ['\u0740']: { value: '', enumerable: true }, //  ݀ Syriac Feminine Dot • feminine marker used with the Taw feminine suffix
+    ['\u0307']: { value: '', enumerable: true }, // ̇  Combining dot above: Use ܒ̇ on the feminine he ending: ܟܬܒܗ̇ ‘her book’, to mark present tense: ܟ̇ܬܒ ‘he is writing’, etc.
+    ['\u0323']: { value: '', enumerable: true }, // ̣  Combining dot below: Use ܒ̣ to mark past tense: ܟ̣ܬܒ ‘he wrote’, etc.
+    ['\u0743']: { value: '', enumerable: true }, //  ݃ Syriac Two Vertical Dots Above • accent mark used in ancient manuscripts
+    ['\u0744']: { value: '', enumerable: true }, //  ݄ Syriac Two Vertical Dots Below • accent mark used in ancient manuscripts
+    ['\u0745']: { value: '', enumerable: true }, //  ݅ Syriac Three Dots Above • diacritic used in Turoyo for letters not found in Syriac
+    ['\u0746']: { value: '', enumerable: true }, //  ݆ Syriac Three Dots Below • diacritic used in Turoyo for letters not found in Syriac
+    ['\u0749']: { value: '', enumerable: true }, //  ݉ Syriac Music • a music mark • also used in the Syrian Orthodox Anaphora book to mark the breaking of the Eucharist bread
+    ['\u074A']: { value: '', enumerable: true }, //  ݊ Syriac Barrekh • a diacritic cross used in liturgical texts
+    ['\u032D']: { value: '', enumerable: true }, // ̭  Turoyo combining circumflex accent below
+    ['\u0653']: { value: '', enumerable: true }, //  ٓ Arabic maddah above - Garshuni
+    ['\u0654']: { value: '', enumerable: true }, //  ٔ Arabic hamza above - Garshuni
+    ['\u0655']: { value: '', enumerable: true }, //  َ Arabic hamza below - Garshuni
+    ['\u0651']: { value: '', enumerable: true } //  ّ Arabic shadda - Garshuni
+  })
+);
+
+/**
  * Is character c a Syriac consonant? All Eastern and Western and Garshuni, etc.
  * @param { string } c input character
  * @returns { boolean } true if c is Syriac consonant
@@ -454,3 +563,12 @@ export const isDotted = hasDotting(isDotting);
  * @returns { string } consonantal word
  */
 export const removeDotting = clearDotting(isDotting);
+
+/**
+ * Comparator function to be used for sorting CAL words
+ * @static
+ * @param { string } word1 first word to compare
+ * @param { string } word2 second word to compare
+ * @returns { number } -1, 0, 1 depending on word sorting
+ */
+export const sort = getSort(letterAsciiMap, removeDotting);
